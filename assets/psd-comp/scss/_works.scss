@@ -1,0 +1,65 @@
+// -------------------------------------
+//   Works Pages Stylings
+// -------------------------------------
+// ----- Works Layout Specifics
+// -------------------------------------
+
+.sidebar {
+	@include span-columns(4);
+	padding-left: 50px;
+	hr {
+		border-bottom: 2px solid $yellow;
+	}
+	
+	// @include media( max-width 810px, 6) { // tablet & below
+ //    	@include span-columns(6);
+	// }
+	@include media( max-width 810px, 6) { // tablet & below
+		@include span-columns(6);
+		padding: 0;
+		width: 100%;
+		max-width: 810px;
+		height: auto;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 0 15px;
+		@include outer-container;
+		
+	}
+}
+
+
+.l-main-container {
+	@include span-columns(8);
+	padding-right: 50px;
+	.main-works-image {
+		margin: 0;
+		padding-bottom: 2em;
+	}
+	@include media( max-width 810px, 6) { // tablet & below
+		@include span-columns(6);
+		padding: 0;
+		width: 100%;
+		max-width: 810px;
+		height: auto;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 0 15px;
+		@include outer-container;
+		
+	}
+
+	// @include media( max-width 810px, 6) { // tablet & below
+ //    	@include span-columns(6);
+    	
+ //    	.main-works-image { 
+ //    		margin: 0;
+ //    		padding: 0;
+ //    	}
+	// }
+}
+
+.l-works-wrap {
+	min-height: 100vh;
+	padding-top: 2em;
+}

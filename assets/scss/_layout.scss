@@ -1,0 +1,104 @@
+// -------------------------------------
+//   Layout
+// -------------------------------------
+// ----- Global layout classes (margin, padding, floats, etc).
+// -------------------------------------
+
+*,
+*:before,
+*:after  {
+   -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+           box-sizing: border-box; 
+}
+
+.content-wrap {
+	width: 100%;
+	//max-width: 1280px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 15px;
+	@include row();
+	@include outer-container;
+	@include mq(iphone) {
+		max-width: 320px;
+	}
+	@include mq(android) {
+		max-width: 480px;
+	}
+	@include mq(tablet) {
+		max-width: 768px;
+	}
+	@include mq(laptop) {
+		max-width: 960px;
+	}
+	@include mq(desktop) {
+		max-width: 1280px;
+	}
+}
+
+// SIMPLIFIED GRID
+
+.row { float: left; width: 100%; @include row(); }
+
+.whole { @include span-columns(12); }
+
+.half { @include span-columns(6); }
+
+.third { @include span-columns(4); }
+
+.fourth { @include span-columns(3); }
+
+.sixth { @include span-columns(2); }
+
+.one { @include span-columns(1); }
+
+// GLOBAL STYLES
+
+body, html {
+	width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	background: #fff;
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: normal;
+	
+	// @include media( max-width 810px, 6) { // tablet & below
+	// 	width: 100%;
+	// 	max-width: 810px;
+	// 	height: auto;
+	// 	margin-left: auto;
+	// 	margin-right: auto;
+	// 	padding: 0 15px;
+	// 	@include row();
+	// 	@include outer-container;
+		
+	// }
+}
+
+//  MixItUp CSS
+.l-works-section .mix {
+	display: none;
+}
+
+
+// iPad with portrait orientation.
+
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+  section {
+    height: 1024px;
+  }
+}
+ 
+
+//iPad with landscape orientation.
+
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+  section {
+    height: 768px;
+  }
+}

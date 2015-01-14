@@ -1,0 +1,384 @@
+// -------------------------------------
+//   Page Stylings
+// -------------------------------------
+// ----- Project Layout Specifics
+// -------------------------------------
+
+// ----- Uncomment if project will be using rems ----- //
+// html {
+//   font-size: 62.5%;
+// }
+
+// ----- header - nav - mobile-nav ----- //
+
+header {
+	position: relative;
+	overflow: hidden;
+	background: #000;
+	background: url("../img/header-bg.png");
+	@include bg-contain;
+	background-position: top, center;
+	min-height: 75px;
+	min-height: 150px; 
+	h1 {
+		color: #fff;
+	}
+
+	ul {
+		li {
+			display: inline-block;
+			padding: 0 1em;
+			a{
+				text-decoration: none;
+				color: #fff;
+			}
+		}
+	}
+
+	// ANIMATED UNDERLINE HOVER - STATE
+	a {
+		display: inline-block;
+		padding: 15px 20px;
+		position: relative;
+		&:after {    
+			background: none repeat scroll 0 0 transparent;
+			bottom: 0;
+			content: "";
+			display: block;
+			height: 2px;
+			left: 50%;
+			position: absolute;
+			background: #fff;
+			@include transition(width 0.3s ease 0s, left 0.3s ease 0s);
+			width: 0;
+		}
+		&:hover:after { 
+			width: 100%; 
+			left: 0; 
+		}
+	}
+	// END ANIMATED UNERLINE HOVER - STATE
+	
+	// SETH LOGO
+	.header-logo {
+		@include span-columns(2);
+		//background: $sethRed;
+		min-height: 150px;
+		// try
+		h3 {
+			background: url("../img/logo-x1.png");
+			@include bg-contain;
+			text-indent: -9999px;
+			@include centerer;
+			left: 2.5%;
+			top: 30%;
+			height: 95px;
+			width: 100%;
+			width: 100vw;
+			
+		}
+		h1 {
+			background: url("../img/logo-x1.png");
+			//background: url(../img/logo.png); 
+			@include bg-contain;
+			// text-indent: -9999px;
+			margin-top: 40px;
+			//margin-left: 25px;
+			margin-right: 130px; 
+			height: 95px;
+			position: relative;
+			text-indent: -9999px;
+			@include transition(all 0.5s ease-in-out);
+			&:hover {
+				cursor: pointer;
+				background: url("../img/logo-x1-hover.png");
+				@include bg-contain;
+			}
+			
+		}
+	}
+	
+	// HEADER CONTENT - right of logo
+	.l-header-section {
+		@include span-columns(10);
+		// SETH TEXT - top left
+		.header-name h2 {
+			color: #fff;
+			margin-top: 35px;
+		}
+		// SITE NAV - top right
+		.header-site-nav {
+			padding-top: 40px;
+			ul {
+				a {
+					font-size: 1.325em; 
+				}
+				li {
+					padding: 0 50px 0 0;
+					&:last-child {
+						padding-right: 50px;
+					}
+				}
+			}
+		}
+	}
+
+	// WORKS NAV - botom
+	.header-works-nav {
+		@include span-columns(12);
+		padding: 0px 0 2px 0;
+		margin-top: 51px;
+		margin-top: 10px;
+		min-width: 100vw;
+		float: right;
+		//background: $sethRed; 
+		ul {
+			float: right;
+			li {
+				padding: 0 55px 0 0;
+				@include transition(all 0.3s ease-in-out);
+				&:hover {
+					cursor: pointer;
+				}
+				a {
+					color: #000;
+					&:hover {
+						color: #fff;
+					}
+				}
+				&:last-child {
+					padding-right: 50px;
+				}
+			}
+		}
+	}
+
+	.desktop-layout {
+		@include media( max-width 810px, 6) { // tablet & below
+    		display: none;
+    	}
+	}
+
+	// MOBILE NAV
+	.mobile-layout {
+		display: none;
+		position: fixed;
+		z-index: 10;
+		//background: #000;  
+		@include media( max-width 810px, 6) { // tablet & below
+    		display: block;
+			width: 100%;
+			max-width: 810px;
+			height: auto;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 0 15px;
+			@include outer-container;
+    	}
+
+		// ANIMATED HAMBURGER ICON TOGGLE BUTTON
+		.mobile-nav-btn {
+			position: absolute;
+			z-index: 9999; 
+			width: 60px;
+			height: 120px;
+			left: 90%;
+			top: -40%;
+			@include transition-duration(0.5s);
+
+			.icon {
+				@include transition-duration(0.5s);
+				position: absolute;
+				height: 4px;
+				width: 30px;
+				top: 60px;
+				background-color: #fff;
+
+				&:before {
+					@include transition-duration(0.5s);
+					position: absolute;
+					height: 4px;
+					width: 30px;
+					background-color: #fff;
+					content: "";
+					top: -10px;
+				}
+
+				&:after {
+					@include transition-duration(0.5s);
+					position: absolute;
+					height: 4px;
+					width: 30px;
+					background-color: #fff;
+					content: "";
+					top: 10px;
+				}
+
+				&:hover{
+				  cursor: pointer;
+				}
+			}
+
+			&.open {
+				.icon {
+					@include transition-duration(0.5s);
+					background: transparent;
+					
+					&:before {
+					  @include transform( rotateZ(45deg) scaleX(1.25) translate(6.5px, 6.5px) );
+					}
+
+					&:after {
+					  @include transform( rotateZ(-45deg) scaleX(1.25) translate(6px, -6px) );
+					}
+				}				
+			}	
+		} // END ANIMATED HAMBURGER TOGGLE BUTTON
+		
+		// MOBILE NAV UL
+		.mobile-nav-menu {
+			top: 75px;
+			position: absolute;
+			width: 80%;
+			background: #000;
+			left: -100%;
+			visibility: hidden;
+			ul {
+				text-align: center;
+				li {
+					display: block;
+					padding: 1em 0;
+				}
+			}
+			.sub-nav {
+				text-align: center;
+				li {
+					padding: 0.5em 0;
+					color: $silver;
+				}
+			}
+			.drop-icon {
+				@include triangle(1em, $charcoal, down);
+				@include centerer;
+				top: 60%;
+				left: 75%;
+			}
+		}
+		
+	} // END mobile-layout section of <header>
+}
+
+// ----- END - header - nav - mobile-nav ----- //
+
+
+// ----- Main/Works Section ----- //
+
+.l-works-section {
+	@include row();
+	@include outer-container;
+	max-width: 100%;
+	min-height: 100vh;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	
+	.l-works-thumb {
+		float: left;
+		width: 25%;
+		margin: 1em 0;
+		position: relative;
+		overflow: hidden;
+		
+		figcaption {
+			background: rgba(0, 0, 0, 0.5); 
+			opacity: 0;
+			color: #fff;
+			font-size: 2em;
+			width: 100%;
+			height: 70%;
+			padding-top: 10%;
+			@include transition(all 0.3s ease-in-out);
+			@include centerer;
+			left: -100%;
+			
+			small {
+				font-size: 12px;
+				&:before, &:after {
+					content: "-";
+				}
+			}
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&:hover > figcaption {
+			left: 50%;
+			opacity: 1;
+		}
+
+		&:hover > img {
+			opacity: 0.5;
+		}
+		
+		@include transform(translate(50%, 50%));
+		.l-stroke-1 {
+			background: url("../img/works-thumbs/stroke-1.png");
+			@include bg-cover;
+		}
+		.l-stroke-2 {
+			background: url("../img/works-thumbs/stroke-2.png");
+			@include bg-cover;
+		}
+		.l-stroke-3 {
+			background: url("../img/works-thumbs/stroke-3.png");
+			@include bg-cover;
+		}
+		
+		img {
+			@include transition(all 0.3s ease-in-out);
+			text-align: center;
+		}
+
+		@include media(max-width 480px, 6) {
+			width: 50%;
+		}
+
+		@include media(max-width 320px, 6) {
+			width: 100%;
+		}
+	}
+}
+
+// ----- END - Main/Works Section ----- //
+
+// ----- Footer ----- //
+
+footer {
+	min-height: 50px;
+	background: $sethRed;
+	color: #fff;
+	//position: relative;
+	.footer-nav {
+		float: right;
+		text-align: right;
+		padding-right: 50px;
+		ul {
+			li {
+				display: inline-block;
+				padding: 0 5px;
+				a{
+					text-decoration: none;
+					color: #fff;
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
